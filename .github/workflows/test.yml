@@ -1,0 +1,22 @@
+name: dart_test
+
+on:
+  push:
+    branches: ["develop"]
+  pull_request:
+    branches: ["develop"]
+
+jobs:
+  build:
+    runs_on: ubuntu-latest
+
+    steps:
+      - uses: actions-checkout@v3
+      - uses: dart-lang/setup-dart@v1
+
+      - name: Instalar dependencias
+        run: dart pub get
+
+      - name: Correr pruebas unitarias
+        run: dart test
+
